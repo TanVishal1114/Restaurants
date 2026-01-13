@@ -22,3 +22,28 @@ Content-Type: application/json
 }
 
 ###
+
+GET {{Restaurants.API_HostAddress}}/api/restaurants
+
+###
+
+GET {{Restaurants.API_HostAddress}}/api/restaurants/1
+
+###
+
+POST {{Restaurants.API_HostAddress}}/api/restaurants
+Content-Type: application/json
+
+{
+   "Name": "Sefaron Tests",
+   "Description": "A cozy restaurant serving a variety of delicious dishes.",
+   "Category": "Indian",
+   "HasDelivery": true,
+   "ContactEmail": "safron@test.com",
+   "ContactNumber": "555-1234",
+   "City": "Greenvill",
+   "Street": "123 Main Street",
+   "PostalCode": "10-121"
+}
+
+###
