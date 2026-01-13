@@ -1,5 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Restaurants.Application.Restaurants;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 
 namespace Restaurants.Application.Extention
 {
@@ -7,8 +9,11 @@ namespace Restaurants.Application.Extention
     {
         public static void AddApplication(this IServiceCollection services)
         {
+            var applicationAssembly = typeof(ServiceCollectionExtention).Assembly;  
             services.AddScoped<IRestaurantsService, RestaurantsService>();
-            services.AddAutoMapper(typeof(ServiceCollectionExtention).Assembly);    
+            services.AddAutoMapper(applicationAssembly);
+            services.AddValidatorsFromAssembly(applicationAssembly)
+                .AddFluentValidationAutoValidation();
         }
     }
 }
