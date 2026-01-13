@@ -1,6 +1,8 @@
-﻿namespace Restaurants.Application.Restaurants.Dtos
+﻿using MediatR;
+
+namespace Restaurants.Application.Restaurants.Commands.CreateRestaurant
 {
-    public class CreateRestaurantDto
+    public class CreateRestaurantCommand:IRequest<int>
     {
         public string Name { get; set; } = default!;
         public string Description { get; set; } = default!;
@@ -11,6 +13,5 @@
         public string? City { get; set; }
         public string? Street { get; set; }
         public string? PostalCode { get; set; }
-        
     }
 }
