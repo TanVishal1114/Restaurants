@@ -25,6 +25,12 @@ namespace Restaurants.Infrastructure.Repositories
             var restaurants = await dbContaxt.Restaurants.FirstOrDefaultAsync(x => x.Id == id);
             return restaurants;
         }
+
+        public async Task DeleteRestaurantAsync(Restaurant restaurant)
+        {
+            dbContaxt.Remove(restaurant);
+            await dbContaxt.SaveChangesAsync();
+        }
     }
 }
 
