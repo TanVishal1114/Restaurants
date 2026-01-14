@@ -16,19 +16,36 @@ namespace Restaurants.Infrastructure.Repositories
 
         public async Task<IEnumerable<Restaurant>> GetAllAsync()
         {
-            var restaurants = await dbContaxt.Restaurants.ToListAsync();
+            var restaurants = await dbContaxt.Restaurants.Include(x=>x.Dishes).ToListAsync();
             return restaurants;
         }
 
         public async Task<Restaurant?> GetRestaurantByIDAsync(int id)
         {
-            var restaurants = await dbContaxt.Restaurants.FirstOrDefaultAsync(x => x.Id == id);
-            return restaurants;
+            try
+            {
+                var restaurants = await dbContaxt.Restaurants.Include(r => r.Dishes)
+                    .Where(x => x.Id == id)
+                    .FirstOrDefaultAsync();
+
+                return restaurants;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+            
         }
 
         public async Task DeleteRestaurantAsync(Restaurant restaurant)
         {
             dbContaxt.Remove(restaurant);
+            await dbContaxt.SaveChangesAsync();
+        }
+
+        public async Task UpdateRestaurantAsync()
+        {
             await dbContaxt.SaveChangesAsync();
         }
     }

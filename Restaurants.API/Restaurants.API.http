@@ -8,10 +8,6 @@ Random-int:{{$randomInt}}
 
 ###
 
-
-
-
-
 @count=0
 POST {{Restaurants.API_HostAddress}}/api/weatherforecast/generate?count=2
 Content-Type: application/json
@@ -27,7 +23,7 @@ GET {{Restaurants.API_HostAddress}}/api/restaurants
 
 ###
 
-GET {{Restaurants.API_HostAddress}}/api/restaurants/165
+GET {{Restaurants.API_HostAddress}}/api/restaurants/1
 
 ###
 
@@ -49,5 +45,16 @@ Content-Type: application/json
 ###
 
 DELETE {{Restaurants.API_HostAddress}}/api/restaurants/4
+
+###
+
+PATCH {{Restaurants.API_HostAddress}}/api/restaurants/5
+Content-Type: application/json
+
+{
+   "Name": "Test patch",
+  "Description": "This is a sample restaurant description.",
+  "HasDelivery": true
+}
 
 ###
