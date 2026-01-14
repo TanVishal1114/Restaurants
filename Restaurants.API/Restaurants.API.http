@@ -31,7 +31,7 @@ POST {{Restaurants.API_HostAddress}}/api/restaurants
 Content-Type: application/json
 
 {
-   "Name": "Dhosha Tests",
+   "Name": "Dhosha Tests33",
    "Description": "A cozy restaurant serving a variety of delicious dishes.",
    "Category": "Indian",
    "HasDelivery": true,
@@ -48,13 +48,13 @@ DELETE {{Restaurants.API_HostAddress}}/api/restaurants/4
 
 ###
 
-PATCH {{Restaurants.API_HostAddress}}/api/restaurants/5
+PATCH {{Restaurants.API_HostAddress}}/api/restaurants/8
 Content-Type: application/json
 
 {
-   "Name": "Test patch",
+   "Name": "Test patch8",
   "Description": "This is a sample restaurant description.",
-  "HasDelivery": true
+  "HasDelivery": false
 }
 
 ###

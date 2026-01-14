@@ -1,6 +1,8 @@
 using Restaurants.Infrastructure.Extention;
 using Restaurants.Application.Extention;
 using Restaurants.Infrastructure.Seeders;
+using Serilog;
+using Serilog.Events;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +15,13 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddApplication();
 builder.Services.AddInfrastructre(builder.Configuration);
-
+builder.Host.UseSerilog((context, configuration) =>
+configuration
+.MinimumLevel.Override("Microsoft",LogEventLevel.Warning)
+.MinimumLevel.Override("Microsoft.EntityFrameworkCore", LogEventLevel.Information)
+.WriteTo.Console(outputTemplate: "[{Timestamp:HH:mm:ss} {Level:u3}] |{SourceContext}| {NewLine} {Message:lj}{NewLine}{Exception}")
+    
+);
 
 var app = builder.Build();
 var scope = app.Services.CreateScope(); 
@@ -27,6 +35,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseSerilogRequestLogging();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

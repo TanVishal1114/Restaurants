@@ -9,12 +9,13 @@ namespace Restaurants.Application.Restaurants.Commands.UpdateRestaurant
     {
         public async Task<bool> Handle(UpdateRestaurantCommand request, CancellationToken cancellationToken)
         {
-            logger.LogInformation("Handling UpdateRestaurantCommand for Restaurant Id: {RestaurantId}", request.Id);
-            var restaurants =await restaurantsRepository.GetRestaurantByIDAsync(request.Id);
-            if (restaurants is null) {
+            logger.LogInformation("Handling UpdateRestaurantCommand for Restaurant Id: {RestaurantId} with {@UpdatedRestaurant}", request.Id, request);
+            var restaurants = await restaurantsRepository.GetRestaurantByIDAsync(request.Id);
+            if (restaurants is null)
+            {
                 return false;
             }
-            _ = mapper.Map(request, restaurants);    
+            _ = mapper.Map(request, restaurants);
             await restaurantsRepository.UpdateRestaurantAsync();
             return true;
         }
