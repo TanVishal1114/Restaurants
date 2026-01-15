@@ -1,8 +1,8 @@
-using Restaurants.Infrastructure.Extention;
+using Restaurants.API.Middlewares;
 using Restaurants.Application.Extention;
+using Restaurants.Infrastructure.Extention;
 using Restaurants.Infrastructure.Seeders;
 using Serilog;
-using Serilog.Events;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +12,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddScoped<ErrorHanlingMiddleware>();
+builder.Services.AddScoped<RequestTimeLoggingMiddleware>();
 builder.Services.AddSwaggerGen();
 builder.Services.AddApplication();
 builder.Services.AddInfrastructre(builder.Configuration);
@@ -35,7 +37,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseMiddleware<ErrorHanlingMiddleware>();
+app.UseMiddleware<RequestTimeLoggingMiddleware>();
 app.UseSerilogRequestLogging();
 app.UseHttpsRedirection();
 

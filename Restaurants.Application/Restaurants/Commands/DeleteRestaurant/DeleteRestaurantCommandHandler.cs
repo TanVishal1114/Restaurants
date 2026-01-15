@@ -1,21 +1,18 @@
-﻿using AutoMapper;
-using MediatR;
+﻿using MediatR;
 using Microsoft.Extensions.Logging;
 using Restaurants.Domain.Entities;
+using Restaurants.Domain.Exceptions;
 using Restaurants.Domain.Repositories;
 
 namespace Restaurants.Application.Restaurants.Commands.DeleteRestaurant
 {
-    internal class DeleteRestaurantCommandHandler(ILogger<DeleteRestaurantCommandHandler> logger, IRestaurantsRepository restaurantsRepository) : IRequestHandler<DeleteRestaurantCommand, bool>
+    internal class DeleteRestaurantCommandHandler(ILogger<DeleteRestaurantCommandHandler> logger, IRestaurantsRepository restaurantsRepository) : IRequestHandler<DeleteRestaurantCommand>
     {
-        public async Task<bool> Handle(DeleteRestaurantCommand request, CancellationToken cancellationToken)
+        public async Task Handle(DeleteRestaurantCommand request, CancellationToken cancellationToken)
         {
-            logger.LogInformation("Deleting restaurant with id: {RestaurantId}",request.Id);
-            var restaurantId = await restaurantsRepository.GetRestaurantByIDAsync(request.Id);
-            if (restaurantId is null)
-                return false;
+            logger.LogInformation("Deleting restaurant with id: {RestaurantId}", request.Id);
+            var restaurantId = await restaurantsRepository.GetRestaurantByIDAsync(request.Id) ?? throw new NotFoundException(nameof(Restaurant), request.Id.ToString());
             await restaurantsRepository.DeleteRestaurantAsync(restaurantId);
-            return true;
         }
     }
 }
