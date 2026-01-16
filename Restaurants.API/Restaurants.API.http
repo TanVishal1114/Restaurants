@@ -1,4 +1,5 @@
 @Restaurants.API_HostAddress = https://localhost:7267
+@token=CfDJ8BLcefdNlD1BkxK1NIeiig2Dfee2q6d51FJEce31MqS1hd1O3zRTen2udWsfRI6BN1HMDZh2BXwwxztDP8Jem7tJ_JUjtlxbwK8rgaEP6VdkFCBSZI1ewfIOMlE4kdWXH8-5qZTaAdMMDze_Zey8u_bsB26Vqr0TnfZDG6zAZTKGZsPMnwDNa2sG_6M9QsXytU1EZt1gycZ__ONOhA1TgwW85P6ehzOXs3yqrdIyVQi65c6EzbFggljJ-5Rz-RDTeplxqZn23gSekTKI1adUI-MSqRylhrL7AGxI5FLbflN3oftqkjJF8bhv-AyR2kro6kznX-EFlgGKAKhI1V5_Hc4sYkOkeSU1Dj0CeUKDsdjPdWIlk8jec1IKdkEyco-l6RNs2fV_G1bJ0S8t-RcEPhAaIOkahgZsi0u75LHKyv_ova9Og172qSRvrj1Mw6ASBMBZGCgZi5e5oEA9cajNoscmGYcZphjpfkurbDRvSJHrpbHtvZPEs_PSEE66HyI2-qNM3XnLFxXFY30TwEN1boBT7YMR3RiQnJyKNJUPVxnQgWqIEguHpxk_L43mIaFoEvYeyD4JWVuM5sOTOKkgPC1914HZ-SG5Bt_e2-nuB8DSNdfhfh0ZeeXNozaje0zQ6RiIpZSsCfUS4KNVRZkNd9kIpxTkjKuIKmpcaqovhfVvnKxluyzDTVTeuBqaBiFJTg
 
 GET {{Restaurants.API_HostAddress}}/api/weatherforecast/23/example?max=100
 Accept: application/json
@@ -20,11 +21,11 @@ Content-Type: application/json
 ###
 
 GET {{Restaurants.API_HostAddress}}/api/restaurants
-
+#Authorization : Bearer {{token}}
 ###
 
 GET {{Restaurants.API_HostAddress}}/api/restaurants/1
-
+Authorization : Bearer {{token}}
 ###
 
 POST {{Restaurants.API_HostAddress}}/api/restaurants
@@ -72,7 +73,7 @@ Content-Type: application/json
 ###
 
 GET {{Restaurants.API_HostAddress}}/api/restaurants/1/dishes
-
+Authentication : Bearer {{token}}
 ###
 
 GET {{Restaurants.API_HostAddress}}/api/restaurants/{restaurantsId}/dishes/{dishId}
@@ -83,7 +84,7 @@ DELETE {{Restaurants.API_HostAddress}}/api/restaurants/5/dishes
 
 ###
 
-POST {{Restaurants.API_HostAddress}}/register
+POST {{Restaurants.API_HostAddress}}/api/identity/register
 Content-Type: application/json
 
 {
@@ -93,7 +94,7 @@ Content-Type: application/json
 
 ###
 
-POST {{Restaurants.API_HostAddress}}/login
+POST {{Restaurants.API_HostAddress}}/api/identity/login
 Content-Type: application/json
 
 {
