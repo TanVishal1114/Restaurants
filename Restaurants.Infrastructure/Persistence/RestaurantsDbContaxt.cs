@@ -4,7 +4,7 @@ using Restaurants.Domain.Entities;
 
 namespace Restaurants.Infrastructure.Persistence
 {
-    internal class RestaurantsDbContaxt(DbContextOptions<RestaurantsDbContaxt> options) : IdentityDbContext<User>(options)
+    internal class RestaurantsDbContaxt(DbContextOptions<RestaurantsDbContaxt> options) : IdentityDbContext<UserEntity>(options)
     {
         internal DbSet<Restaurant> Restaurants { get; set; }
         internal DbSet<Dish> Dishes { get; set; }

@@ -33,8 +33,8 @@ app.UseMiddleware<RequestTimeLoggingMiddleware>();
 app.UseSerilogRequestLogging();
 app.UseHttpsRedirection();
 app.MapGroup("api/identity")
-    .WithTags("Restaurants.API")
-    .MapIdentityApi<User>();
+    .WithTags("Identity")
+    .MapIdentityApi<UserEntity>();
 app.UseAuthorization();
 
 app.MapControllers();

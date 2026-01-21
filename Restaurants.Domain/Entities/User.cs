@@ -2,7 +2,9 @@
 
 namespace Restaurants.Domain.Entities
 {
-    public class User : IdentityUser
+    public class UserEntity : IdentityUser
     {
+        public DateOnly DateofBirth { get; set; }
+        public string? Nationality { get; set; }
     }
 }

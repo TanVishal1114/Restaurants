@@ -17,7 +17,7 @@ namespace Restaurants.Infrastructure.Extention
             var connectionString = configuration.GetConnectionString("RestaurantsDb");
             services.AddDbContext<RestaurantsDbContaxt>(options => options.UseSqlServer(connectionString)
             .EnableSensitiveDataLogging());
-            services.AddIdentityApiEndpoints<User>()
+            services.AddIdentityApiEndpoints<UserEntity>()
             .AddEntityFrameworkStores<RestaurantsDbContaxt>();
             services.AddScoped<IRestaurantSeeder, RestaurantSeeder>();
             services.AddScoped<IRestaurantsRepository, RestaurantsRepository>();
