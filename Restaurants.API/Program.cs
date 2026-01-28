@@ -32,6 +32,7 @@ app.UseMiddleware<ErrorHanlingMiddleware>();
 app.UseMiddleware<RequestTimeLoggingMiddleware>();
 app.UseSerilogRequestLogging();
 app.UseHttpsRedirection();
+
 app.MapGroup("api/identity")
     .WithTags("Identity")
     .MapIdentityApi<UserEntity>();
