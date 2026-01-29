@@ -5,7 +5,7 @@ using Restaurants.Domain.Entities;
 using Restaurants.Domain.Exceptions;
 
 
-namespace Restaurants.Application.Users.Commnds
+namespace Restaurants.Application.Users.Commnds.UpdateUserRoles
 {
     public class UpdateUserDetailsCommandHandler(ILogger<UpdateUserDetailsCommandHandler> logger, IUserContext userContext, IUserStore<UserEntity> userStore) : IRequestHandler<UpdateUserDetailsCommand>
     {
