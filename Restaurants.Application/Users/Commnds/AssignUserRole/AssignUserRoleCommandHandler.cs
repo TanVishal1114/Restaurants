@@ -12,7 +12,7 @@ namespace Restaurants.Application.Users.Commnds.AssignUserRole
     {
         public async Task Handle(AssignUserRoleCommand request, CancellationToken cancellationToken)
         {
-            logger.LogInformation("Assigning new Role");
+            logger.LogInformation("Assigning new Role {@Request}", request);
             var user = await userManager.FindByEmailAsync(request.UserEmail) ?? throw new NotFoundException(nameof(CurrentUser), request.UserEmail);
             var role = await roleManager.FindByNameAsync(request.UserRole) ?? throw new NotFoundException(nameof(CurrentUser), request.UserRole);
             await userManager.AddToRoleAsync(user, role.Name!);
