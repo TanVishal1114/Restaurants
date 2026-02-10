@@ -12,5 +12,8 @@
         public Address? Address { get; set; }
 
         public List<Dish> Dishes { get; set; } = [];
+
+        public UserEntity Owner { get; set; } = default!;
+        public string OwnerId { get; set; } = default!;
     }
 }
