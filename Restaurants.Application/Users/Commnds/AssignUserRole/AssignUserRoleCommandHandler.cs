@@ -8,7 +8,7 @@ using Restaurants.Domain.Exceptions;
 namespace Restaurants.Application.Users.Commnds.AssignUserRole
 {
     public class AssignUserRoleCommandHandler(ILogger<AssignUserRoleCommandHandler> logger,
-        UserManager<UserEntity> userManager, RoleManager<IdentityRole> roleManager) : IRequestHandler<AssignUserRoleCommand>
+        UserManager<Domain.Entities.UserEntity> userManager, RoleManager<IdentityRole> roleManager) : IRequestHandler<AssignUserRoleCommand>
     {
         public async Task Handle(AssignUserRoleCommand request, CancellationToken cancellationToken)
         {

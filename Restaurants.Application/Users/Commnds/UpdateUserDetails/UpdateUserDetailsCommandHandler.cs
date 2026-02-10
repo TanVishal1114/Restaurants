@@ -7,7 +7,7 @@ using Restaurants.Domain.Exceptions;
 
 namespace Restaurants.Application.Users.Commnds.UpdateUserDetails
 {
-    public class UpdateUserDetailsCommandHandler(ILogger<UpdateUserDetailsCommandHandler> logger, IUserContext userContext, IUserStore<UserEntity> userStore) : IRequestHandler<UpdateUserDetailsCommand>
+    public class UpdateUserDetailsCommandHandler(ILogger<UpdateUserDetailsCommandHandler> logger, IUserContext userContext, IUserStore<Domain.Entities.UserEntity> userStore) : IRequestHandler<UpdateUserDetailsCommand>
     {
         public async Task Handle(UpdateUserDetailsCommand request, CancellationToken cancellationToken)
         {

@@ -16,6 +16,7 @@ namespace Restaurants.Application.Extention
                 .AddFluentValidationAutoValidation();
             services.AddScoped<IUserContext, UserContext>();
             services.AddHttpContextAccessor();
+
         }
     }
 }

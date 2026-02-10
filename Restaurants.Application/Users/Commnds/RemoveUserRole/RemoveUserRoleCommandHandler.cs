@@ -9,7 +9,7 @@ using Restaurants.Domain.Exceptions;
 namespace Restaurants.Application.Users.Commnds.RemoveUserRole
 {
     public class RemoveUserRoleCommandHandler(ILogger<AssignUserRoleCommandHandler> logger,
-        UserManager<UserEntity> userManager, RoleManager<IdentityRole> roleManager) : IRequestHandler<RemoveUserRoleCommand>
+        UserManager<Domain.Entities.UserEntity> userManager, RoleManager<IdentityRole> roleManager) : IRequestHandler<RemoveUserRoleCommand>
     {
         public async Task Handle(RemoveUserRoleCommand request, CancellationToken cancellationToken)
         {
