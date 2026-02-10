@@ -18,6 +18,13 @@ namespace Restaurants.API.Middlewares
                 await context.Response.WriteAsJsonAsync(new { Error = notFound.Message });
                 logger.LogWarning(notFound, notFound.Message);
             }
+            catch (ForbidException)
+            {
+                context.Response.StatusCode = 403;
+                await context.Response.WriteAsync("Access forbidden");
+            }
+
+
             catch (Exception ex)
             {
                 logger.LogError(ex, "An unhandled exception has occurred while processing the request.");
