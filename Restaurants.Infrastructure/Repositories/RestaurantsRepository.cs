@@ -16,7 +16,15 @@ namespace Restaurants.Infrastructure.Repositories
 
         public async Task<IEnumerable<Restaurant>> GetAllAsync()
         {
-            var restaurants = await dbContaxt.Restaurants.Include(x=>x.Dishes).AsNoTracking().ToListAsync();
+            var restaurants = await dbContaxt.Restaurants.Include(x => x.Dishes).AsNoTracking().ToListAsync();
+            return restaurants;
+        }
+
+        public async Task<IEnumerable<Restaurant>> GetAllMatchingAsync(string? searchPhrase)
+        {
+            var searchPhraseLower = searchPhrase?.ToLower();
+            var restaurants = await dbContaxt.Restaurants.Where(r => searchPhraseLower == null || (r.Name.ToLower().Contains(searchPhraseLower) || r.Description.ToLower().Contains(searchPhraseLower))).ToListAsync();
+            // .Include(x => x.Dishes).ToListAsync();
             return restaurants;
         }
 
@@ -35,7 +43,7 @@ namespace Restaurants.Infrastructure.Repositories
                 Console.WriteLine(ex.Message);
                 return null;
             }
-            
+
         }
 
         public async Task DeleteRestaurantAsync(Restaurant restaurant)

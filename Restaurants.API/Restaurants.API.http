@@ -20,7 +20,7 @@ Content-Type: application/json
 
 ###
 
-GET {{Restaurants.API_HostAddress}}/api/restaurants
+GET {{Restaurants.API_HostAddress}}/api/restaurants?searchPhrase=Test
 Authorization : Bearer {{token}}
 ###
 
