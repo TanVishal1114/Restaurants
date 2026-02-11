@@ -1,5 +1,5 @@
 @Restaurants.API_HostAddress = https://localhost:7267
-@token=CfDJ8BLcefdNlD1BkxK1NIeiig0HzEiLtW21Dg359AJikpeR7lUPNVJ0fmIV_Y8QvQjGeLrQSoPbjMg7Ac2J7KKEhrxsqqbHAJMZQ-VqoyoUwzo4dN5QnZt_azhGDWUGiCKYUNeUhvenzT7iYbLYdomkv6EXE9x6KYEDD9tIOwcuxAS3a92EPKeJP2IVDXhjcIj_aSfmpGS1uZ0TkC5xPIsbpqvv1weSc4p4fsiN4HoiDHg4n5gr8UeriY6ZwiByEdbeCHNxtnh2dqLfksa_07JXyLfL0Nv6jAmwlpC2WiyJHtlh3otE7Yf_WriD5gDyoFhYSjSXAAsdU1HAJCaPfy6ll7ZnsuB73bLO569UX9C8bNO8L_rLlTCV4_Qi9iMXb0GllRx2ZuIl3C4ZMLH-YybzSGGjhiznIer67Niwp1-Tya9ditslnD6HcNPY6ZoLP4QotHY4I-aLPmwKHtb72ANTaKC09H1OC59JcIbR_d3mxxhnRTMy4I3-f1-4Cp5kU0D30Fdvmhg9sePyBm-zb_tcd7gR4-kVr44ubzWFyxsZqTQzpVMZ7njHKJwtkfh3MktbcYG54JweD_sNbkHYKlp59tNUfJ0tgViDL6-jz5Iak_wlxMEkTbpzIUpCaCTgRLy4xC8CSliIyT8iBttZAUqiMlVK4LzlCHj3BU-kKffxfrmh8Z-DJwBtSPWcRS8KNk7Wr2gtYDto1YFGSBSxU8Y4An8cTqRTcNJ4YRmp9PGjh6qT5cyBMydoTYqaF5DTQz5AIeeNk9roMilolQ6bA8foh6oZGp8Ll1pW4x8sFBUhHaPktz1ls7Oj58yFTVrhk8zL5cPFuGxrqzRVPm4hUpRSxIimsJoU3dvFOAuqe6U-_xaKzburDGIxY7cv170CwoiHvA
+@token=CfDJ8BLcefdNlD1BkxK1NIeiig1DYzN4kMjyBeTHF2L2BNgAjuII3VPAZrfj2_pYgqf5kwCgQhfCBDcAR6F9RRepqZzl3Bz1KiwXt50OLHA4YbwnCJ__GJ4jN28otniXdaYFGXo6TSwYV3tKh0bE6jD6onAqJ3vB399n4xxMQAuUIP9Hr1aBXws--yz0FcnyY4kPo1uEl_Gd0KyLVoRlTa7Is-4O0X4NUWhS1P7eATKXWNnFINEelt0UalWzCJvfSjGUsbRUjSZ5rwMfGdT1iwoA4wBqw_FeEceegsUlgpxcjhwhMafagovoL2-NEZaLZbWrPLWpYxt6tfGx4ZZBylSkCdKlOCBfU51tEBj1bDk-9OqgL39y7FBDq15TUvJli33Rh7AhFC0pfm49IV4tnm0hS27AggEflt-zvriw02qlCQiFvjFk39tcEiwLKUvNjps53MyZtpLPwONWmNCgLMIMTD7hxOLuf_0E9gxgUjBtMp8oifZZqgPDPunKEdZVQTuatyFLOHX3J0XurktX4pu8tRWG0cbkqxB0C_ypSsOPun5KmqdsC2L7AXlqVvcaJ3Liby93ZpBDMK-6OglJNMj_vhhRxS6tB8vsPLj-qffosNTpdH0Sr55oBDHIehoxS-Ffy3bq_QMQcU_xcqetxr5NChyX7KnhiWT-VcQk14EUNxLqxumymWaHF4O2_Y67CjWOWswwaS4qILsRy0m_rHNJDkY_DfNxJZYPaAaj6y-S-Qx70TXFgds8T2NWuIFzyfZsnVAHdfVkNnkRGXguNS0H73CTE86vaAZLCCDZDwOK6Rfg
 
 GET {{Restaurants.API_HostAddress}}/api/weatherforecast/23/example?max=100
 Accept: application/json
@@ -33,7 +33,7 @@ Authorization : Bearer {{token}}
 Content-Type: application/json
 
 {
-   "Name": "Chinees Tests33123",
+   "Name": "Test33 Chinees Tests33123",
    "Description": "A cozy restaurant serving a variety ggg of delicious dishes.",
    "Category": "Indian",
    "HasDelivery": true,
@@ -41,7 +41,7 @@ Content-Type: application/json
    "ContactNumber": "555-123473",
    "City": "Bilimora",
    "Street": "143 Main Streetee",
-   "PostalCode": "10-143"
+   "PostalCode": "10-144"
 }
 
 ###
@@ -90,7 +90,7 @@ POST {{Restaurants.API_HostAddress}}/api/identity/register
 Content-Type: application/json
 
 {
-    "email": "owner@test.com",
+    "email": "owner2@test.com",
     "password": "Password1!"
 }
 
@@ -100,7 +100,7 @@ POST {{Restaurants.API_HostAddress}}/api/identity/login
 Content-Type: application/json
 
 {
-    "email": "owner@test.com",
+    "email": "owner2@test.com",
     "password": "Password1!"
 }
 ###
@@ -121,3 +121,12 @@ Content-Type: application/json
 # Authorization: Bearer {{token}}
 
 # ###
+
+POST {{Restaurants.API_HostAddress}}/api/identity/userRole
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "UserEmail": "owner2@test.com",
+  "UserRole": "Owner"
+}

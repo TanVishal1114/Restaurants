@@ -18,7 +18,8 @@ namespace Restaurants.API.Controllers;
 public class RestaurantsController(IMediator mediator) : ControllerBase
 {
     [HttpGet]
-    //[AllowAnonymous]
+    [Authorize(Policy = PolicyNames.CreatedAtleast2Restaurants)]
+    
     public async Task<ActionResult<IEnumerable<RestaurantDto>>> GetAll()
     {
         var restaurants = await mediator.Send(new GetAllRestaurantsQuery());
@@ -26,7 +27,7 @@ public class RestaurantsController(IMediator mediator) : ControllerBase
     }
 
     [HttpGet("{id}")]
-   // [Authorize(Policy = PolicyNames.HasNationality)]
+    [Authorize(Policy = PolicyNames.HasNationality)]
     public async Task<ActionResult<RestaurantDto>> GetRestauranById([FromRoute] int id)
     {
         var restaurants = await mediator.Send(new GetRestaurantByIdQuery(id));
