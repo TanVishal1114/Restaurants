@@ -20,7 +20,7 @@ Content-Type: application/json
 
 ###
 
-GET {{Restaurants.API_HostAddress}}/api/restaurants?searchPhrase=Test
+GET {{Restaurants.API_HostAddress}}/api/restaurants?searchPhrase=wiza&pageSize=10&pageNumber=2
 Authorization : Bearer {{token}}
 ###
 
